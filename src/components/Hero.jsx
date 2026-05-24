@@ -1,142 +1,100 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Download } from 'lucide-react';
+import Typewriter from 'typewriter-effect';
+import { ArrowUpRight } from 'lucide-react';
+// import VerticalMarquee removed
 
 export default function Hero() {
+
+  const handleScrollToProjects = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: window.innerWidth * 4, behavior: 'smooth' });
+  };
+
   return (
-    <section 
-      id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0B0F19]"
-    >
-      {/* Background Gradient/Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#C9A54C]/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] bg-repeat opacity-20 pointer-events-none" />
-
-      <div className="container mx-auto px-6 md:px-12 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
-        <div className="flex flex-col items-start space-y-6 pt-20 md:pt-0">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#C9A54C] animate-pulse" />
-            <span className="text-xs font-medium tracking-wider text-gray-300 uppercase">Available for new opportunities</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl md:text-7xl font-bold text-white tracking-tight leading-tight"
-          >
-            K B <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A54C] to-[#E5C77A]">Tushar</span>
-            <br />
-            <span className="text-3xl md:text-5xl text-gray-400 font-normal">MERN Stack Developer</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed"
-          >
-            Engineering scalable digital experiences with clean architecture.
-            Built real-time applications with modern technologies.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap items-center gap-4 pt-4"
-          >
-            <a
-              href="#projects"
-              className="group flex items-center space-x-2 px-8 py-4 bg-[#C9A54C] text-[#0B0F19] font-semibold rounded hover:bg-[#E5C77A] transition-all duration-300 shadow-[0_0_20px_rgba(201,165,76,0.3)] hover:shadow-[0_0_30px_rgba(201,165,76,0.6)]"
-            >
-              <span>View Projects</span>
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            
-            <a
-              href="/K.B.Tushar.pdf" target="_blank" rel="noreferrer"
-              className="group flex items-center space-x-2 px-8 py-4 bg-transparent border border-white/20 text-white font-medium rounded hover:bg-white/5 transition-all duration-300"
-            >
-              <span>Download Resume</span>
-              <Download size={20} className="text-gray-400 group-hover:text-white transition-colors" />
-            </a>
-          </motion.div>
-        </div>
-
-        {/* Visual Element (Abstract Representation) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          className="hidden md:flex justify-center items-center relative h-[500px]"
-        >
-          {/* Decorative rotating squares */}
-          <motion.div 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[400px] h-[400px] border border-white/5 rounded-full"
-          />
-          <motion.div 
-            animate={{ rotate: -360 }}
-            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-            className="absolute w-[300px] h-[300px] border border-[#C9A54C]/20 rounded-full"
-          />
-          
-          <div className="relative w-64 h-80 rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent backdrop-blur-sm overflow-hidden flex flex-col justify-end p-6 shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19] via-transparent to-transparent flex-1" />
-            
-            {/* Tech Stack Floating Icons */}
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-10 left-6 w-12 h-12 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-center text-[#C9A54C] text-xl font-bold shadow-[0_0_15px_rgba(201,165,76,0.15)]"
-            >
-              M
-            </motion.div>
-            <motion.div 
-              animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-24 right-8 w-14 h-14 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-center text-blue-400 text-xl font-bold shadow-[0_0_15px_rgba(96,165,250,0.15)]"
-            >
-              Re
-            </motion.div>
-            <motion.div 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              className="absolute bottom-28 left-10 w-10 h-10 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-center text-green-400 text-lg font-bold shadow-[0_0_15px_rgba(74,222,128,0.15)]"
-            >
-              N
-            </motion.div>
-
-            <div className="relative z-10 w-full h-1/3 bg-[#C9A54C]/10 border-t border-[#C9A54C]/30 flex flex-col justify-center items-center rounded-xl backdrop-blur-md">
-              <span className="text-[#C9A54C] text-sm tracking-widest uppercase">System</span>
-              <span className="text-white text-xs mt-1 font-mono">Status: Online</span>
-            </div>
-          </div>
-        </motion.div>
+    <section id="home" className="hs-panel section-wrapper bg-gradient-to-br from-[#4a0101] via-[#850404] to-[#1a0000] flex items-center shrink-0 overflow-hidden">
+      
+      {/* Top Left Specific Typing Animation matching new constraints */}
+      <div className="absolute top-12 left-12 md:left-24 z-50 text-white font-body font-bold tracking-[0.2em] text-lg sm:text-xl uppercase blink-glow-text">
+        <Typewriter
+          options={{
+            strings: ['</TUSHAR>'],
+            autoStart: true,
+            loop: true,
+            delay: 120,
+            deleteSpeed: 60,
+            cursorClassName: 'text-white font-light',
+          }}
+        />
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2"
-      >
-        <span className="text-xs text-gray-500 uppercase tracking-widest">Scroll</span>
-        <motion.div 
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-12 bg-gradient-to-b from-[#C9A54C] to-transparent"
-        />
-      </motion.div>
+      {/* Floating Stars */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40 mix-blend-screen">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white"
+            style={{
+              width: Math.random() * 2 + 1 + 'px',
+              height: Math.random() * 2 + 1 + 'px',
+              left: Math.random() * 100 + '%',
+              top: Math.random() * 100 + '%',
+              animation: `float ${3 + Math.random() * 5}s alternate infinite ${Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 z-0 font-heading font-black text-white/[0.03] select-none scale-y-150 tracking-tighter" style={{ fontSize: '40vw', lineHeight: 0.8 }}>
+        &lt;/&gt;
+      </div>
+
+      {/* VerticalMarquee removed for responsiveness */}
+
+      <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-6 z-20">
+        <div className="w-8 h-8 rounded-full border border-white/20 flex flex-col items-center justify-center text-[9px] text-white/50 font-body">01</div>
+        <div className="w-[1px] h-6 bg-white/20" />
+        <span className="text-[10px] uppercase tracking-widest text-white/60 font-body" style={{ writingMode: 'vertical-lr', transform: 'rotate(180deg)' }}>HOME</span>
+        <div className="w-[1px] h-12 bg-white/20" />
+      </div>
+
+      <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-12 z-20 hidden md:flex">
+        <a href="https://github.com/tusharbuildsweb-star" target="_blank" rel="noreferrer" className="group text-[10px] uppercase tracking-[0.2em] text-white/60 hover:text-white font-body transition-colors" style={{ writingMode: 'vertical-rl' }}>GITHUB <span className="text-white/20 ml-2 group-hover:text-white">•</span></a>
+        <a href="https://linkedin.com/in/tusharkb" target="_blank" rel="noreferrer" className="group text-[10px] uppercase tracking-[0.2em] text-white/60 hover:text-white font-body transition-colors" style={{ writingMode: 'vertical-rl' }}>LINKEDIN <span className="text-white/20 ml-2 group-hover:text-white">•</span></a>
+        <a href="mailto:tusharkb2025@gmail.com" className="text-[10px] uppercase tracking-[0.2em] text-white/60 hover:text-white font-body transition-colors" style={{ writingMode: 'vertical-rl' }}>EMAIL</a>
+      </div>
+
+      <div className="w-full max-w-7xl mx-auto px-20 md:px-32 lg:px-44 z-10">
+        <div className="reveal relative z-10">
+          
+          {/* Main Title Center remains K B Tushar while Top left does the active looping */}
+          <h1 className="text-white font-heading font-black text-5xl sm:text-7xl md:text-[7rem] tracking-tighter mb-4" style={{ textShadow: '0 0 40px rgba(255,255,255,0.2)' }}>
+            K B Tushar
+          </h1>
+
+          <h2 className="font-display font-semibold text-white tracking-[0.3em] text-sm sm:text-lg mb-8 uppercase">
+            Full Stack Developer
+          </h2>
+
+          <div className="w-32 h-[1px] bg-white/20 mb-8" />
+
+          <p className="font-body text-white/70 font-semibold tracking-[0.2em] text-[10px] sm:text-xs mb-14 uppercase">
+            MERN STACK &nbsp;•&nbsp; JAVA &nbsp;•&nbsp; REALTIME APPLICATIONS
+          </p>
+
+          <div className="flex flex-wrap items-center gap-6">
+            <button onClick={handleScrollToProjects} className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-full hover:bg-white/90 transition-colors shadow-lg">
+              View Work <ArrowUpRight size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+            <a href="mailto:tusharkb2025@gmail.com" className="inline-flex items-center justify-center px-8 py-3.5 border border-white/30 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:border-white hover:bg-white/5 transition-colors">
+              Contact Me
+            </a>
+            <a href="/Resume_KBTushar.pdf" target="_blank" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-white/30 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:border-white hover:bg-white/5 transition-colors">
+              Resume <ArrowUpRight size={14} />
+            </a>
+          </div>
+
+        </div>
+      </div>
     </section>
   );
 }
